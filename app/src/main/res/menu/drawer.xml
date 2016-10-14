@@ -4,45 +4,75 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/clothing"
             android:checked="false"
             android:icon="@drawable/ic_inbox_black"
-            android:title="@string/inbox_string" />
+            android:title="@string/clothing_string" />
 
         <item
-            android:id="@+id/starred"
+            android:id="@+id/shoes"
             android:checked="false"
             android:icon="@drawable/ic_star_black"
-            android:title="@string/starred_string" />
+            android:title="@string/shoes_string" />
 
         <item
-            android:id="@+id/sent_mail"
+            android:id="@+id/designer"
             android:checked="false"
             android:icon="@drawable/ic_send_black"
-            android:title="@string/sent_mail_string" />
+            android:title="@string/designer_string" />
 
         <item
-            android:id="@+id/drafts"
+            android:id="@+id/autumn"
             android:checked="false"
             android:icon="@drawable/ic_drafts_black"
-            android:title="@string/draft_string" />
+            android:title="@string/autumn_string" />
 
 
         <item
-            android:id="@+id/allmail"
+            android:id="@+id/accessories"
             android:checked="false"
             android:icon="@drawable/ic_email_black"
-            android:title="@string/all_mail_string" />
+            android:title="@string/accessories_string" />
         <item
-            android:id="@+id/trash"
+            android:id="@+id/bags_purses"
             android:checked="false"
             android:icon="@drawable/ic_delete_black"
-            android:title="@string/trash_string" />
+            android:title="@string/bag_purses_string" />
         <item
-            android:id="@+id/spam"
+            android:id="@+id/beauty"
+            android:checked="false"
+            android:icon="@drawable/ic_delete_black"
+            android:title="@string/beauty_string" />
+        <item
+            android:id="@+id/coat"
             android:checked="false"
             android:icon="@drawable/ic_error_black"
-            android:title="@string/spam_string" />
+            android:title="@string/coats_jackets_string" />
+        <item
+            android:id="@+id/curve"
+            android:checked="false"
+            android:icon="@drawable/ic_error_black"
+            android:title="@string/curve_string" />
+        <item
+            android:id="@+id/dresses"
+            android:checked="false"
+            android:icon="@drawable/ic_error_black"
+            android:title="@string/dresses_string" />
+        <item
+            android:id="@+id/jeans"
+            android:checked="false"
+            android:icon="@drawable/ic_error_black"
+            android:title="@string/jeans_string" />
+        <item
+            android:id="@+id/jewellery"
+            android:checked="false"
+            android:icon="@drawable/ic_error_black"
+            android:title="@string/jewellery_string" />
+        <item
+            android:id="@+id/jumpers_cardigans"
+            android:checked="false"
+            android:icon="@drawable/ic_error_black"
+            android:title="@string/jumpers_cardigans_string" />
 
     </group>
 </menu>
