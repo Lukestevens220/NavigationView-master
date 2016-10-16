@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,12 +20,26 @@ import android.view.SubMenu;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android4dev.navigationview.adapter.ProductAdapter;
+import com.android4dev.navigationview.model.CategoryResults;
+import com.android4dev.navigationview.observables.ObservableType;
+
+import java.util.List;
+
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
 
     //Defining Variables
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private RecyclerView mRecycleView;
+    private ObservableType product_api;
+    private ProductAdapter productAdapter;
+    private CategoryResults categoryResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -94,7 +108,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Initializing Drawer Layout and ActionBarToggle
+        navigationView.getMenu().clear();
+        final Menu menu;
+
+        product_api.getCategoryList()
+                .onBackpressureBuffer()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<CategoryResults>>() {
+                               @Override
+                               public void onCompleted() {
+
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+
+                               }
+
+                               @Override
+                               public void onNext(List<CategoryResults> categoryResultses) {
+                                   if (categoryResultses.size() > 0 && categoryResultses != null) {
+                                       productAdapter = new ProductAdapter(categoryResultses, R.layout.card_row, getApplicationContext());
+                                       mRecycleView.setAdapter(productAdapter);
+                                   }
+                               }
+                           });
+                    // Initializing Drawer Layout and ActionBarToggle
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.openDrawer, R.string.closeDrawer){
 

@@ -5,4 +5,5 @@ package com.android4dev.navigationview.mvp;
  */
 
 public interface BasePresenter {
+    void start();
 }
