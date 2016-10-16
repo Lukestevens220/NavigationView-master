@@ -24,4 +24,49 @@
 
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
+
+    <string name="question_text">Question</string>
+    <string name="button_1">option 1</string>
+    <string name="button_2">option 2</string>
+    <string name="button_3">option 3</string>
+    <string name="button_4">option 4</string>
+    <string name="next_button"> Next</string>
+    <string name="option_1">You have selected option 1</string>
+    <string name="option_2">You have selected option 2</string>
+    <string name="option_3">You have selected option 3</string>
+    <string name="option_4">You have selected option 4</string>
+    <string name="question_1">Are you here?.</string>
+    <string name="question_2">Question 2 </string>
+    <string name="question_3">Question 3 </string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="room_number"> Room Number</string>
+    <string name="find_room">Find Room Number</string>
+    <string name="time">Time</string>
+    <string name="welcome">Welcome User</string>
+    <string name="login">Sign In</string>
+    <string name="register">Register</string>
+    <string name="title">Asos</string>
+    <string name="leave_room">Leave Channel</string>
+    <string name="vertical_ellipsis">&#8942;</string>
+    <string name="descr_overflow_button">Describe overflow button;</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_username">This username is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

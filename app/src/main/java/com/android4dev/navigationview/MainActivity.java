@@ -110,30 +110,30 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView.getMenu().clear();
         final Menu menu;
-
-        product_api.getCategoryList()
-                .onBackpressureBuffer()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<CategoryResults>>() {
-                               @Override
-                               public void onCompleted() {
-
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-
-                               }
-
-                               @Override
-                               public void onNext(List<CategoryResults> categoryResultses) {
-                                   if (categoryResultses.size() > 0 && categoryResultses != null) {
-                                       productAdapter = new ProductAdapter(categoryResultses, R.layout.card_row, getApplicationContext());
-                                       mRecycleView.setAdapter(productAdapter);
-                                   }
-                               }
-                           });
+//
+//        product_api.getCategoryList()
+//                .onBackpressureBuffer()
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<List<CategoryResults>>() {
+//                               @Override
+//                               public void onCompleted() {
+//
+//                               }
+//
+//                               @Override
+//                               public void onError(Throwable e) {
+//
+//                               }
+//
+//                               @Override
+//                               public void onNext(List<CategoryResults> categoryResultses) {
+//                                   if (categoryResultses.size() > 0 && categoryResultses != null) {
+//                                       productAdapter = new ProductAdapter(categoryResultses, R.layout.card_row, getApplicationContext());
+//                                       mRecycleView.setAdapter(productAdapter);
+//                                   }
+//                               }
+//                           });
                     // Initializing Drawer Layout and ActionBarToggle
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.openDrawer, R.string.closeDrawer){

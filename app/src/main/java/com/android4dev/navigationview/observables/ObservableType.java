@@ -22,8 +22,8 @@ public interface ObservableType {
     public Observable<List<CategoryResults>> getCategoryList();
 
     @GET(constants.ProductsByCategory_URL)
-    Observable<ProductsByCategoryResults> getProductDetails(@Path("id") int id);
+    Observable<ProductsByCategoryResults> getProductsByCategory(@Path("id") int id);
 
-    @GET(constants.ProductsByCategory_URL)
-    Observable<ProductDetailsResults> getProductsByCategory(@Path("id") int id);
+    @GET(constants.ProductDetails_URL)
+    Observable<ProductDetailsResults> getProductDetails(@Path("id") int id);
 }
