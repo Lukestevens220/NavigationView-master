@@ -20,9 +20,13 @@ import com.android4dev.navigationview.observables.ObservableType;
 
 import java.util.List;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CategoryContract.IView, CategoryAdapter.CategoryClickListener {
 
     //Defining Variables
+    CategoryContract.IPresenter mPresenter;
+    CategoryPresenter categoryListImplPresenter;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        categoryListImplPresenter= new CategoryPresenter(this);
         // Initializing Toolbar and setting it as the actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,9 +72,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mRecycleView = (RecyclerView) findViewById(R.id.list);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycleview);
         mRecycleView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        categoryListImplPresenter.displayCategoryList();
 
 
         //Initializing NavigationView
@@ -200,12 +206,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void passDataAdapter(List<CategoryResults.Listing> listings) {
-
+        mRecycleView.setAdapter(new CategoryAdapter(listings, getApplicationContext()));
     }
 
     @Override
     public void setPresenter(CategoryContract.IPresenter presenter) {
-
+        mPresenter= checkNotNull(presenter);
     }
 
     @Override

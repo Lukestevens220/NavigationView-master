@@ -3,12 +3,21 @@ package com.android4dev.navigationview.ProductsByCategory;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android4dev.navigationview.Category.CategoryAdapter;
+import com.android4dev.navigationview.Category.CategoryContract;
+import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.ProductDetails.ProductContract;
 import com.android4dev.navigationview.R;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +27,7 @@ import com.android4dev.navigationview.R;
  * Use the {@link ProductByCategoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProductByCategoryFragment extends Fragment {
+public class ProductByCategoryFragment extends Fragment  implements NavigationView.OnNavigationItemSelectedListener, ProductByCategoryContract.IView, ProductsByCategoryAdapter.CategoryClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -92,6 +101,11 @@ public class ProductByCategoryFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void setPresenter(CategoryContract.IPresenter presenter) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -105,5 +119,31 @@ public class ProductByCategoryFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void showProgresDialog() {
+
+    }
+
+    @Override
+    public void dismissProgressDialog() {
+
+    }
+
+    @Override
+    public void passDataAdapter(List<ProductsByCategoryResults.Listing> listings) {
+
+    }
+
+
+    @Override
+    public void onCategoryClicked(View v, int position) {
+
     }
 }

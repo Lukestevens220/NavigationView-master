@@ -59,4 +59,9 @@ public class ProductsByCategoryAdapter extends RecyclerView.Adapter{
     public int getItemCount() {
         return categories.size();
     }
+
+    public interface CategoryClickListener{
+        public void onCategoryClicked(View v, int position);
+
+    }
 }

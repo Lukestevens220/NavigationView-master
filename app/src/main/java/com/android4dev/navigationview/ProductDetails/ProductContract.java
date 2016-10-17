@@ -11,7 +11,7 @@ import java.util.List;
  * Created by TheAppExperts on 17/10/2016.
  */
 
-public class ProductContract {
+public interface ProductContract {
 
     interface IPresenter extends BasePresenter {
         /**
