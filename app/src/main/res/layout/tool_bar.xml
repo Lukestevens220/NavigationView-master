@@ -13,22 +13,24 @@
         android:layout_gravity="center"
         android:weightSum="1">
 
+
         <ImageView
             android:src="@drawable/logo"
             android:layout_width="94dp"
             android:layout_height="match_parent" />
 
         <ImageView
-            android:src="@drawable/basket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.83" />
-
-        <ImageView
             android:src="@drawable/wishlist"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.90"/>
         />
+
+        <ImageView
+            android:src="@drawable/basket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

@@ -33,7 +33,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by Admin on 04-06-2015.
  */
-public class ContentFragment extends Fragment implements ListingActivityContract.IView {
+public class ContentFragment extends Fragment  {
 
     ListingActivityContract.IPresenter mPresenter;
     ListingListPresenter_Impl listingListPresenter_impl;
@@ -43,115 +43,115 @@ public class ContentFragment extends Fragment implements ListingActivityContract
     private SwipeRefreshLayout swipeRefreshLayout;
     private ObservableType product_api;
 
-    @Override
-    public void onResume(){
-
-        super.onResume();
-        listingListPresenter_impl.start();
-    }
+//    @Override
+//    public void onResume(){
+//
+//        super.onResume();
+//        listingListPresenter_impl.start();
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.content_fragment,container,false);
+    return v;
 
-
-        connectToService();
-        listingListPresenter_impl= new ListingListPresenter_Impl(this);
-        initialiseRecyclerView(v);
-        //fragment = this;
-        listingListPresenter_impl.displayCategoryList();
-
-
-        return v;
-    }
-
-
-    private void initialiseRecyclerView(View v) {
-        recyclerView = (RecyclerView) v.findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    private void initialiseProgressDialog() {
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-
-    }
-
-
-    private void hideProgressDialog() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-            progressDialog = null;
-        }
-
-    }
-
-
-    @Override
-    public void showProgresDialog() {
-
-    }
-
-    @Override
-    public void dismissProgressDialog() {
-        hideProgressDialog();
-    }
-
-    @Override
-    public void passDataAdapter(List<CategoryResults.Listing> listings) {
-        recyclerView.setAdapter(new ProductAdapter(listings, getContext()));
-    }
-
-
-    @Override
-    public void setPresenter(ListingActivityContract.IPresenter presenter) {
-        mPresenter= checkNotNull(presenter);
-
-    }
-    private void callService() {
-        callCategoryService();
-        }
-
-
-
-    private void connectToService() {
-        product_api = ConnectionService.getConnectionService();
-    }
-
-
-    private void callCategoryService() {
-        product_api.getCategoryList()
-                .onBackpressureBuffer()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CategoryResults>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(CategoryResults categoryResults) {
-
-                        ArrayList<CategoryResults.Listing> categories = new ArrayList<CategoryResults.Listing>();
-                        categories.addAll(categoryResults.getListing());
-
-                        Log.i("MainActivity", "Size of array is " + categories.size());
-
-                        if (categories.size() > 0) {
-                            Log.d("ProductCentre", "Number of products: " + categories.size());
-                            //iView.passDataAdapter(categories);
-                        }
-
-                    }
-                });
+//        connectToService();
+//        listingListPresenter_impl= new ListingListPresenter_Impl(this);
+//        initialiseRecyclerView(v);
+//        //fragment = this;
+//        listingListPresenter_impl.displayCategoryList();
+//
+//
+//        return v;
+//    }
+//
+//
+//    private void initialiseRecyclerView(View v) {
+//        recyclerView = (RecyclerView) v.findViewById(R.id.list);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//    }
+//
+//    private void initialiseProgressDialog() {
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
+//
+//    }
+//
+//
+//    private void hideProgressDialog() {
+//        if (progressDialog != null) {
+//            progressDialog.dismiss();
+//            progressDialog = null;
+//        }
+//
+//    }
+//
+//
+//    @Override
+//    public void showProgresDialog() {
+//
+//    }
+//
+//    @Override
+//    public void dismissProgressDialog() {
+//        hideProgressDialog();
+//    }
+//
+//    @Override
+//    public void passDataAdapter(List<CategoryResults.Listing> listings) {
+//        recyclerView.setAdapter(new ProductAdapter(listings, getContext()));
+//    }
+//
+//
+//    @Override
+//    public void setPresenter(ListingActivityContract.IPresenter presenter) {
+//        mPresenter= checkNotNull(presenter);
+//
+//    }
+//    private void callService() {
+//        callCategoryService();
+//        }
+//
+//
+//
+//    private void connectToService() {
+//        product_api = ConnectionService.getConnectionService();
+//    }
+//
+//
+//    private void callCategoryService() {
+//        product_api.getCategoryList()
+//                .onBackpressureBuffer()
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<CategoryResults>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(CategoryResults categoryResults) {
+//
+//                        ArrayList<CategoryResults.Listing> categories = new ArrayList<CategoryResults.Listing>();
+//                        categories.addAll(categoryResults.getListing());
+//
+//                        Log.i("MainActivity", "Size of array is " + categories.size());
+//
+//                        if (categories.size() > 0) {
+//                            Log.d("ProductCentre", "Number of products: " + categories.size());
+//                            //iView.passDataAdapter(categories);
+//                        }
+//
+//                    }
+//                });
     }
 
 //    private void callPopService() {

@@ -57,7 +57,7 @@ public class ListingListPresenter_Impl implements ListingActivityContract.IPrese
                         Log.i("MainActivity", "Size of array is " + categories.size());
 
                         if (categories.size() > 0) {
-                            Log.d("ProductCentre", "Number of products: " + categories.size());
+                            Log.d("SongCentre", "Number of songs: " + categories.size());
                             iView.passDataAdapter(categories);
                         }
 
