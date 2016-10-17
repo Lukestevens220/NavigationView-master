@@ -19,7 +19,7 @@ import rx.Observable;
 public interface ObservableType {
 
     @GET(constants.CATEGORY_MEN_URL)
-    public Observable<List<CategoryResults>> getCategoryList();
+    public Observable<CategoryResults> getCategoryList();
 
     @GET(constants.ProductsByCategory_URL)
     Observable<ProductsByCategoryResults> getProductsByCategory(@Path("id") int id);

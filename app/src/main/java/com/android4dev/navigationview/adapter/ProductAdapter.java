@@ -20,11 +20,11 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter{
 
-    private List<CategoryResults> categories;
+    private List<CategoryResults.Listing> categories;
     private int rowLayout;
     private Context context;
 
-    public ProductAdapter(List<CategoryResults> categories, int rowLayout, Context context) {
+    public ProductAdapter(List<CategoryResults.Listing> categories, Context context) {
         this.categories = categories;
         this.rowLayout = rowLayout;
         this.context = context;
@@ -50,9 +50,9 @@ public class ProductAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder,  int position) {
-        CategoryResults categoryResults = categories.get(position);
+        CategoryResults.Listing categoryResults = categories.get(position);
         ProductViewHolder holder = (ProductViewHolder) viewHolder;
-        holder.category.setText(categoryResults.getDescription());
+        holder.category.setText(categoryResults.getName());
 
     }
 

@@ -1,6 +1,8 @@
 package com.android4dev.navigationview.mvp;
 
 
+import com.android4dev.navigationview.model.CategoryResults;
+
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ public interface ListingActivityContract {
          * All API calls and calls to data sources local or remote
          * called by views
          */
-        void displaySongList();
+        void displayCategoryList();
     }
     interface IView extends BaseView<IPresenter>{
         /**
@@ -24,6 +26,6 @@ public interface ListingActivityContract {
 
         void showProgresDialog();
         void dismissProgressDialog();
-        //void passDataAdapter(List<Listing> listings); needs uncommenting
+        void passDataAdapter(List<CategoryResults.Listing> listings);
     }
 }
