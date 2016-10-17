@@ -18,12 +18,15 @@ import rx.Observable;
 
 public interface ObservableType {
 
+    //get the url for category of men
     @GET(constants.CATEGORY_MEN_URL)
     public Observable<CategoryResults> getCategoryList();
 
+    //get the url for products by category
     @GET(constants.ProductsByCategory_URL)
     Observable<ProductsByCategoryResults> getProductsByCategory(@Path("id") int id);
 
+    //get the url for product details
     @GET(constants.ProductDetails_URL)
     Observable<ProductDetailsResults> getProductDetails(@Path("id") int id);
 }

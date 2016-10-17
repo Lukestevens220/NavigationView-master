@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,27 +34,92 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by Admin on 04-06-2015.
  */
-public class ContentFragment extends Fragment  {
+public class ContentFragment extends Fragment implements ListingActivityContract.IView {
 
-    ListingActivityContract.IPresenter mPresenter;
-    ListingListPresenter_Impl listingListPresenter_impl;
-    private RecyclerView recyclerView;
-    private ProductAdapter adapter;
-    private ProgressDialog progressDialog;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private ObservableType product_api;
+        ListingActivityContract.IPresenter mPresenter;
+        ListingListPresenter_Impl listingListPresenter_;
+private RecyclerView recyclerView;
+private ProductAdapter adapter;
+private ProgressDialog progressDialog;
+private SwipeRefreshLayout swipeRefreshLayout;
+//private SongCentre.onSongsDownloadedListener fragment;
 
-//    @Override
-//    public void onResume(){
-//
-//        super.onResume();
-//        listingListPresenter_impl.start();
-//    }
+@Override
+public void onResume(){
+
+        super.onResume();
+        listingListPresenter_.start();
+        }
+
+@Override
+public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v =inflater.inflate(R.layout.content_fragment,container,false);
+
+        listingListPresenter_= new ListingListPresenter_Impl(this);
+        initialiseRecyclerView(v);
+        //initialiseSwipeRefreshLayout(v);
+        listingListPresenter_.displayCategoryList();
+
+
+        return v;
+        }
+
+
+private void initialiseRecyclerView(View v) {
+        recyclerView = (RecyclerView)v.findViewById(R.id.list);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        }
+
+private void initialiseProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        }
+
+//@Override
+//public void onSongsDownloaded(ProductAdapter adapter) {
+//        this.adapter = adapter;
+//        recyclerView.setAdapter(adapter);
+//        //adapter.notifyDataSetChanged();
+//        hideProgressDialog();
+//        swipeRefreshLayout.setRefreshing(false);
+//        }
+
+private void hideProgressDialog() {
+        if (progressDialog != null) {
+        progressDialog.dismiss();
+        progressDialog = null;
+        }
+
+        }
+
+
+@Override
+public void showProgresDialog() {
+
+        }
+
+@Override
+public void dismissProgressDialog() {
+        hideProgressDialog();
+        }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.content_fragment,container,false);
-    return v;
+    public void passDataAdapter(List<CategoryResults.Listing> listings) {
+        recyclerView.setAdapter(new ProductAdapter(listings, getContext()));
+
+    }
+
+
+@Override
+public void setPresenter(@NonNull ListingActivityContract.IPresenter presenter) {
+        mPresenter= checkNotNull(presenter);
+
+        }
+
 
 //        connectToService();
 //        listingListPresenter_impl= new ListingListPresenter_Impl(this);
@@ -221,4 +287,4 @@ public class ContentFragment extends Fragment  {
 //                    }
 //                });
 //    }
-}
+
