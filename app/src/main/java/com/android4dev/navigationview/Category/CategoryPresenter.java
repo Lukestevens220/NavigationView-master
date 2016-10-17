@@ -1,33 +1,35 @@
-package com.android4dev.navigationview.mvp;
+package com.android4dev.navigationview.Category;
 
 import android.content.Context;
 import android.util.Log;
 
-//import com.android4dev.navigationview.ProductCentre;
-import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.mvp.BasePresenter;
+import com.android4dev.navigationview.mvp.BaseView;
+import com.android4dev.navigationview.mvp.ListingActivityContract;
 import com.android4dev.navigationview.observables.ObservableType;
 import com.android4dev.navigationview.service.ConnectionService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by TheAppExperts on 14/10/2016.
+ * Created by TheAppExperts on 17/10/2016.
  */
 
-public class ListingListPresenter_Impl implements ListingActivityContract.IPresenter {
+public class CategoryPresenter implements CategoryContract.IPresenter {
 
-    ListingActivityContract.IView iView;
+    CategoryContract.IView iView;
     private Context context;
     //private ProductCentre.onSongsDownloadedListener listener;
 
     private ObservableType observables =
             ConnectionService.getConnectionService();
 
-    public ListingListPresenter_Impl(ListingActivityContract.IView iView){
+    public CategoryPresenter(CategoryContract.IView iView){
         this.iView=iView;
     }
 
@@ -57,7 +59,7 @@ public class ListingListPresenter_Impl implements ListingActivityContract.IPrese
                         Log.i("MainActivity", "Size of array is " + categories.size());
 
                         if (categories.size() > 0) {
-                            Log.d("SongCentre", "Number of songs: " + categories.size());
+                            Log.d("Category", "Categories: " + categories.size());
                             iView.passDataAdapter(categories);
                         }
 
@@ -67,7 +69,7 @@ public class ListingListPresenter_Impl implements ListingActivityContract.IPrese
 
     @Override
     public void start() {
-        iView.setPresenter(ListingListPresenter_Impl.this);
+        iView.setPresenter(com.android4dev.navigationview.Category.CategoryPresenter.this);
 
     }
 

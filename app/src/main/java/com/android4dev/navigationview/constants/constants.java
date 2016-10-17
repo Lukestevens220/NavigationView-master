@@ -12,7 +12,7 @@ public class constants {
     //category female url
     public static final String CATEGORY_FEMALE_URL = "cats_women.json";
     //ProductsByCategory_URL
-    public static final String ProductsByCategory_URL = "anycat_products.json?catid={id}";
+    public static final String ProductsByCategory_URL = "anycat_products.json";
     //ProductDetails_URL
-    public static final String ProductDetails_URL = "anyproduct_details.json?catid={id}";
+    public static final String ProductDetails_URL = "anyproduct_details.json";
 }

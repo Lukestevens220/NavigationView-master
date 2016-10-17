@@ -1,31 +1,34 @@
-package com.android4dev.navigationview.mvp;
+package com.android4dev.navigationview.Category;
 
-
-import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.mvp.BasePresenter;
+import com.android4dev.navigationview.mvp.BaseView;
 
 import java.util.List;
 
 /**
- * Created by TheAppExperts on 14/10/2016.
+ * Created by TheAppExperts on 17/10/2016.
  */
 
-public interface ListingActivityContract {
+public interface CategoryContract {
 
-    interface IPresenter extends BasePresenter{
+    interface IPresenter extends BasePresenter {
         /**
          * All API calls and calls to data sources local or remote
          * called by views
          */
         void displayCategoryList();
     }
-    interface IView extends BaseView<IPresenter>{
+
+    interface IView extends BaseView<com.android4dev.navigationview.Category.CategoryContract.IPresenter> {
         /**
          * All things which view should perform
          * call by presenter
          */
 
         void showProgresDialog();
+
         void dismissProgressDialog();
+
         void passDataAdapter(List<CategoryResults.Listing> listings);
     }
 }

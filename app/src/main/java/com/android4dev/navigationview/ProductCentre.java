@@ -3,9 +3,9 @@
 //import android.content.Context;
 //import android.util.Log;
 //
-//import com.android4dev.navigationview.adapter.ProductAdapter;
+//import com.android4dev.navigationview.Category.ProductAdapter;
 //import com.android4dev.navigationview.model.CategoryResults;
-//import com.android4dev.navigationview.model.ProductDetailsResults;
+//import com.android4dev.navigationview.ProductDetails.ProductDetailsResults;
 //import com.android4dev.navigationview.observables.ObservableType;
 //import com.android4dev.navigationview.service.ConnectionService;
 //

@@ -1,9 +1,9 @@
-package com.android4dev.navigationview.mvp;
+package com.android4dev.navigationview.ProductsByCategory;
 
 import android.content.Context;
 import android.util.Log;
 
-//import com.android4dev.navigationview.ProductCentre;
+import com.android4dev.navigationview.Category.CategoryContract;
 import com.android4dev.navigationview.Category.CategoryResults;
 import com.android4dev.navigationview.observables.ObservableType;
 import com.android4dev.navigationview.service.ConnectionService;
@@ -15,29 +15,29 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by TheAppExperts on 14/10/2016.
+ * Created by TheAppExperts on 17/10/2016.
  */
 
-public class ListingListPresenter_Impl implements ListingActivityContract.IPresenter {
+public class ProductByCategoryPresenter implements ProductByCategoryContract.IPresenter {
 
-    ListingActivityContract.IView iView;
+    ProductByCategoryContract.IView iView;
     private Context context;
     //private ProductCentre.onSongsDownloadedListener listener;
 
     private ObservableType observables =
             ConnectionService.getConnectionService();
 
-    public ListingListPresenter_Impl(ListingActivityContract.IView iView){
-        this.iView=iView;
+    public ProductByCategoryPresenter(ProductByCategoryContract.IView iView) {
+        this.iView = iView;
     }
 
     @Override
-    public void displayCategoryList() {
-        observables.getCategoryList()
+    public void displayProductsByCategoryList() {
+        observables.getProductsByCategory()
                 .onBackpressureBuffer()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CategoryResults>() {
+                .subscribe(new Observer<ProductsByCategoryResults>() {
                     @Override
                     public void onCompleted() {
 
@@ -49,10 +49,10 @@ public class ListingListPresenter_Impl implements ListingActivityContract.IPrese
                     }
 
                     @Override
-                    public void onNext(CategoryResults categoryResults) {
+                    public void onNext(ProductsByCategoryResults categoryResults) {
 
-                        ArrayList<CategoryResults.Listing> categories = new ArrayList<CategoryResults.Listing>();
-                        categories.addAll(categoryResults.getListing());
+                        ArrayList<ProductsByCategoryResults.Listing> categories = new ArrayList<ProductsByCategoryResults.Listing>();
+                        categories.addAll(categoryResults.getListings());
 
                         Log.i("MainActivity", "Size of array is " + categories.size());
 
@@ -67,8 +67,7 @@ public class ListingListPresenter_Impl implements ListingActivityContract.IPrese
 
     @Override
     public void start() {
-        iView.setPresenter(ListingListPresenter_Impl.this);
+        iView.setPresenter(com.android4dev.navigationview.ProductsByCategory.ProductByCategoryPresenter.this);
 
     }
-
 }

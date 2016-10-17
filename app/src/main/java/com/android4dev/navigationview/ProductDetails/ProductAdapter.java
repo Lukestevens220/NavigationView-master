@@ -1,4 +1,4 @@
-package com.android4dev.navigationview.adapter;
+package com.android4dev.navigationview.ProductDetails;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,23 +8,23 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.ProductsByCategory.ProductsByCategoryResults;
 import com.android4dev.navigationview.R;
-import com.android4dev.navigationview.model.CategoryResults;
 
 import java.util.List;
 
-
 /**
- * Created by TheAppExperts on 12/10/2016.
+ * Created by TheAppExperts on 17/10/2016.
  */
 
 public class ProductAdapter extends RecyclerView.Adapter{
 
-    private List<CategoryResults.Listing> categories;
+    private List<ProductDetailsResults> categories;
     private int rowLayout;
     private Context context;
 
-    public ProductAdapter(List<CategoryResults.Listing> categories, Context context) {
+    public ProductAdapter(List<ProductDetailsResults> categories, Context context) {
         this.categories = categories;
         this.rowLayout = rowLayout;
         this.context = context;
@@ -33,7 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.categories, viewGroup, false);
-        return new ProductViewHolder(v);
+        return new com.android4dev.navigationview.ProductDetails.ProductAdapter.ProductViewHolder(v);
     }
 
 
@@ -50,9 +50,9 @@ public class ProductAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder,  int position) {
-        CategoryResults.Listing categoryResults = categories.get(position);
-        ProductViewHolder holder = (ProductViewHolder) viewHolder;
-        holder.category.setText(categoryResults.getName());
+        ProductDetailsResults categoryResults = categories.get(position);
+        com.android4dev.navigationview.ProductDetails.ProductAdapter.ProductViewHolder holder = (com.android4dev.navigationview.ProductDetails.ProductAdapter.ProductViewHolder) viewHolder;
+        holder.category.setText(categoryResults.getDescription());
 
     }
 

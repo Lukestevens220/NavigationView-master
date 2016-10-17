@@ -7,27 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android4dev.navigationview.adapter.ProductAdapter;
-import com.android4dev.navigationview.model.CategoryResults;
-import com.android4dev.navigationview.model.ProductDetailsResults;
+import com.android4dev.navigationview.Category.CategoryAdapter;
+import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.ProductDetails.ProductAdapter;
 import com.android4dev.navigationview.mvp.ListingActivityContract;
 import com.android4dev.navigationview.mvp.ListingListPresenter_Impl;
-import com.android4dev.navigationview.observables.ObservableType;
-import com.android4dev.navigationview.service.ConnectionService;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -109,7 +100,7 @@ public void dismissProgressDialog() {
 
     @Override
     public void passDataAdapter(List<CategoryResults.Listing> listings) {
-        recyclerView.setAdapter(new ProductAdapter(listings, getContext()));
+        recyclerView.setAdapter(new CategoryAdapter(listings, getContext()));
 
     }
 

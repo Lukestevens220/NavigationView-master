@@ -1,4 +1,4 @@
-package com.android4dev.navigationview.model;
+package com.android4dev.navigationview.ProductsByCategory;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,14 +1,11 @@
 package com.android4dev.navigationview.observables;
 
 import com.android4dev.navigationview.constants.constants;
-import com.android4dev.navigationview.model.CategoryResults;
-import com.android4dev.navigationview.model.ProductDetailsResults;
-import com.android4dev.navigationview.model.ProductsByCategoryResults;
-
-import java.util.List;
+import com.android4dev.navigationview.Category.CategoryResults;
+import com.android4dev.navigationview.ProductDetails.ProductDetailsResults;
+import com.android4dev.navigationview.ProductsByCategory.ProductsByCategoryResults;
 
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -24,9 +21,9 @@ public interface ObservableType {
 
     //get the url for products by category
     @GET(constants.ProductsByCategory_URL)
-    Observable<ProductsByCategoryResults> getProductsByCategory(@Path("id") int id);
+    Observable<ProductsByCategoryResults> getProductsByCategory(@Query("catid") String id);
 
     //get the url for product details
     @GET(constants.ProductDetails_URL)
-    Observable<ProductDetailsResults> getProductDetails(@Path("id") int id);
+    Observable<ProductDetailsResults> getProductDetails(@Query("catid") int id);
 }

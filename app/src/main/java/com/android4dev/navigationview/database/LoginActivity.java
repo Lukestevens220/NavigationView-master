@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.android4dev.navigationview.MainActivity;
+import com.android4dev.navigationview.Category.MainActivity;
 import com.android4dev.navigationview.R;
 
 // http://www.tutorialspoint.com/android/android_login_screen.htm
